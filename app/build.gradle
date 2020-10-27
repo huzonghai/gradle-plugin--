@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+
+apply plugin: 'com.enjoy.jiagu'
+jiagu{
+    username 'xxx'
+    password 'xxx'
+//    keyStorePath file('gm.keystore').absolutePath
+    keyStorePath 'D:\\work\\sdkOutput\\gm.keystore'
+    keyStorePass '123456'
+    keyStoreKeyAlias 'gm0'
+    keyStoreKeyAliasPwd '123456'
+    jiaGuToolPath 'D:\\soft\\360jiagubao_windows_64\\jiagu\\jiagu.jar'
+}
+
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.example.demo"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:22.2.1'
+}
